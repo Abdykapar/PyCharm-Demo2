@@ -123,18 +123,18 @@ def table1(request):
         if row[59].value == '':
             row[59].value = 1
         otd = Bolumder.objects.get(pk=row[59].value)
-        table1 = MyTable(
-            Sifra = row[1].value, NameN=row[2].value, Surname=row[3].value, Lastname=row[4].value, Pol=row[7].value, Dr=row[8].value, Nas=row[11].value,
-            Sh=row[12].value, Adress_Sh_Oblast=lkO, Adress_Sh_Rayon=lkR, Adress_Sh_Selo=row[15].value,
-            Adress_Home_Oblast=homeO, Adress_Home_Rayon=homeR, Adress_Home_Selo=row[18].value, Adress_Home_Ulisa=row[19].value,
-            Telefon=row[20].value, God=god,
-            t1=row[23].value, t2=row[24].value, t3=row[25].value, t4=row[26].value, t5=row[27].value, PolePrav=row[31].value, PoleNeprav=row[32].value,
-            PoleProbel=row[33].value, SozD=row[34].value, SozY=row[35].value, SozB=row[36].value, SayD=row[37].value, SayY=row[38].value,
-            SayB=row[39].value, DilD=row[40].value, DilY=row[41].value, DilB=row[42].value, NetSay=row[43].value, NetSoz=row[44].value,
-            NetDil=row[45].value, SrSay=row[46].value, SrSoz=row[47].value, SrDil=row[48].value, SSay=row[49].value, SSoz=row[50].value,
-            SDil=row[51].value, StdSay=row[52].value, StdSoz=row[53].value, StdDil=row[54].value, EA=row[55].value, SonSoz=row[56].value,
-            SonSay=row[57].value, SonDil=row[58].value, Otdelenie=otd, NomTerciha=tercih)
-        table1.save()
+        # table1 = MyTable(
+        #     Sifra = row[1].value, NameN=row[2].value, Surname=row[3].value, Lastname=row[4].value, Pol=row[7].value, Dr=row[8].value, Nas=row[11].value,
+        #     Sh=row[12].value, Adress_Sh_Oblast=lkO, Adress_Sh_Rayon=lkR, Adress_Sh_Selo=row[15].value,
+        #     Adress_Home_Oblast=homeO, Adress_Home_Rayon=homeR, Adress_Home_Selo=row[18].value, Adress_Home_Ulisa=row[19].value,
+        #     Telefon=row[20].value, God=god,
+        #     t1=row[23].value, t2=row[24].value, t3=row[25].value, t4=row[26].value, t5=row[27].value, PolePrav=row[31].value, PoleNeprav=row[32].value,
+        #     PoleProbel=row[33].value, SozD=row[34].value, SozY=row[35].value, SozB=row[36].value, SayD=row[37].value, SayY=row[38].value,
+        #     SayB=row[39].value, DilD=row[40].value, DilY=row[41].value, DilB=row[42].value, NetSay=row[43].value, NetSoz=row[44].value,
+        #     NetDil=row[45].value, SrSay=row[46].value, SrSoz=row[47].value, SrDil=row[48].value, SSay=row[49].value, SSoz=row[50].value,
+        #     SDil=row[51].value, StdSay=row[52].value, StdSoz=row[53].value, StdDil=row[54].value, EA=row[55].value, SonSoz=row[56].value,
+        #     SonSay=row[57].value, SonDil=row[58].value, Otdelenie=otd, NomTerciha=tercih)
+        # table1.save()
 
     return HttpResponse(b)
 

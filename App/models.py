@@ -8,6 +8,9 @@ class Bolumder(models.Model):
     NameTur = models.CharField(max_length=200)
     NameKir = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.NameOtd
+
 
 class Lkp_God(models.Model):
     God = models.IntegerField()
