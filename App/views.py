@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from decimal import Decimal
 import xlrd
 from xlrd.sheet import ctype_text
-from .models import Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp
+from .models import Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp, Pol
 
 
 def index(request):
@@ -22,7 +22,7 @@ def BolumderAdd(request):
     for i in range(1,bolum.count()+1):
         row = sheet.row(i)
         print row[4].value
-        bolum.filter(id=i).update(Kod=row[4].value)
+        # bolum.filter(id=i).update(Kod=row[4].value)
     # inserBolumder(sheet)
     return HttpResponse('Ok')
 
@@ -68,7 +68,7 @@ def insertLkpGod(val):
 
 def lkpOblast(request):
     b = []
-    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/LkpOblast.xlsx"
+    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/LkpOblast14.xlsx"
     book = xlrd.open_workbook(file_location)
     sheet = book.sheet_by_index(0)
     for a in range(1, sheet.nrows):
@@ -81,21 +81,42 @@ def lkpOblast(request):
 
 def lkpRayon(request):
     b = []
-    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/LkpRayon.xlsx"
+    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/LkpRayon14.xlsx"
     book = xlrd.open_workbook(file_location)
     sheet = book.sheet_by_index(0)
     for a in range(1, sheet.nrows):
         row = sheet.row(a)
-        # rayon = LkpRayon(Rayon=row[2].value, KodOblast_id=row[1].value)
-        # rayon.save()
+        rayon = LkpRayon(Rayon=row[2].value, KodOblast_id=row[1].value)
+        rayon.save()
 
     return HttpResponse(b)
+
+
+def pol(request):
+    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/Lkp_Jinisi_3.xlsx"
+    book = xlrd.open_workbook(file_location)
+    sheet = book.sheet_by_index(0)
+    for a in range(1, sheet.nrows):
+        row = sheet.row(a)
+        print row[1].value
+        polEx = Pol(
+            PolK=row[1].value, PolR=row[2].value, PolT=row[3].value
+        )
+        polEx.save()
+
+    return HttpResponse('Ok')
+
+
+def editTable1(request):
+    for i in range(1,6367):
+        MyTable.objects.filter(id=5819+i).update(God_Created=2011)
+    return HttpResponse('Ok')
 
 
 def table1(request):
     b = []
 
-    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
+    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/2014.xlsx"
     # file_location = "/media/abdykapar/46E6D1D4E6D1C479/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
     book = xlrd.open_workbook(file_location)
     sheet = book.sheet_by_index(0)
@@ -130,20 +151,20 @@ def table1(request):
         if row[59].value == '':
             row[59].value = 1
         otd = Bolumder.objects.get(pk=row[59].value)
-        # table1 = MyTable(
-        #     Sifra = row[1].value, NameN=row[2].value, Surname=row[3].value, Lastname=row[4].value, Pol=row[7].value, Dr=row[8].value, Nas=row[11].value,
-        #     Sh=row[12].value, Adress_Sh_Oblast=lkO, Adress_Sh_Rayon=lkR, Adress_Sh_Selo=row[15].value,
-        #     Adress_Home_Oblast=homeO, Adress_Home_Rayon=homeR, Adress_Home_Selo=row[18].value, Adress_Home_Ulisa=row[19].value,
-        #     Telefon=row[20].value, God=god,
-        #     t1=row[23].value, t2=row[24].value, t3=row[25].value, t4=row[26].value, t5=row[27].value, PolePrav=row[31].value, PoleNeprav=row[32].value,
-        #     PoleProbel=row[33].value, SozD=row[34].value, SozY=row[35].value, SozB=row[36].value, SayD=row[37].value, SayY=row[38].value,
-        #     SayB=row[39].value, DilD=row[40].value, DilY=row[41].value, DilB=row[42].value, NetSay=row[43].value, NetSoz=row[44].value,
-        #     NetDil=row[45].value, SrSay=row[46].value, SrSoz=row[47].value, SrDil=row[48].value, SSay=row[49].value, SSoz=row[50].value,
-        #     SDil=row[51].value, StdSay=row[52].value, StdSoz=row[53].value, StdDil=row[54].value, EA=row[55].value, SonSoz=row[56].value,
-        #     SonSay=row[57].value, SonDil=row[58].value, Otdelenie=otd, NomTerciha=tercih)
-        # table1.save()
+        table1 = MyTable(
+            Sifra = row[1].value, NameN=row[2].value, Surname=row[3].value, Lastname=row[4].value, Pol=row[7].value, Dr=row[8].value, Nas=row[11].value,
+            Sh=row[12].value, Adress_Sh_Oblast=lkO, Adress_Sh_Rayon=lkR, Adress_Sh_Selo=row[15].value,
+            Adress_Home_Oblast=homeO, Adress_Home_Rayon=homeR, Adress_Home_Selo=row[18].value, Adress_Home_Ulisa=row[19].value,
+            Telefon=row[20].value, God=god,
+            t1=row[23].value, t2=row[24].value, t3=row[25].value, t4=row[26].value, t5=row[27].value, PolePrav=row[31].value, PoleNeprav=row[32].value,
+            PoleProbel=row[33].value, SozD=row[34].value, SozY=row[35].value, SozB=row[36].value, SayD=row[37].value, SayY=row[38].value,
+            SayB=row[39].value, DilD=row[40].value, DilY=row[41].value, DilB=row[42].value, NetSay=row[43].value, NetSoz=row[44].value,
+            NetDil=row[45].value, SrSay=row[46].value, SrSoz=row[47].value, SrDil=row[48].value, SSay=row[49].value, SSoz=row[50].value,
+            SDil=row[51].value, StdSay=row[52].value, StdSoz=row[53].value, StdDil=row[54].value, EA=row[55].value, SonSoz=row[56].value,
+            SonSay=row[57].value, SonDil=row[58].value, Otdelenie=otd, NomTerciha=tercih, God_Created=2014)
+        table1.save()
 
-    return HttpResponse(b)
+    return HttpResponse('Ok')
 
 
 def ExpRayon(request):

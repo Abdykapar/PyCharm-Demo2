@@ -26,6 +26,11 @@ class LkpRayon(models.Model):
     Rayon = models.CharField(max_length=200)
 
 
+class Pol(models.Model):
+    PolK = models.CharField(max_length=200)
+    PolR = models.CharField(max_length=200)
+    PolT = models.CharField(max_length=200)
+
 
 class MyTable(models.Model):
     Sifra = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True)
