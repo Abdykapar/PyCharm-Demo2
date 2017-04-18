@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.index , name='index'),
+    url(r'^bolum$', views.BolumderAdd , name='Bolum'),
     url(r'^lkpGod$', views.LkpGod, name='lkpGod'),
     url(r'^lkpOblast$', views.lkpOblast, name='lkpOblast'),
     url(r'^lkpRayon$', views.lkpRayon, name='lkpRayon'),

@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Sqlite (Xerial) - identifier.sqlite" uuid="c71ee8ad-07e1-424e-aafa-4a7f8d752841">
+    <data-source name="Django default driver - identifier.sqlite" uuid="47a347a6-0b69-4e31-ade9-21a8522ac26c">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
       <secret-storage>master_key</secret-storage>
       <auth-required>false</auth-required>
       <first-sync>true</first-sync>
     </data-source>
-    <data-source name="Sqlite (Xerial) - db.sqlite3" uuid="3cfc5311-6ec0-401f-a7c5-406dc0297f7b">
+    <data-source name="Sqlite (Xerial) - django.sqlite3" uuid="23d8ad76-654f-44c7-8b58-6770dca36bbc">
       <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
-      <auth-required>false</auth-required>
-    </data-source>
-    <data-source name="Sqlite (Xerial) - django.sqlite3" uuid="3a28d09d-36a9-4f4b-a4f6-a31838b5b167">
-      <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
-      <secret-storage>master_key</secret-storage>
-      <auth-required>false</auth-required>
-    </data-source>
-    <data-source name="Django default" uuid="2af3a233-4ca1-405a-9079-78e98c465998">
-      <database-info product="SQLite" version="3.8.11" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
-      <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <auth-required>false</auth-required>
     </data-source>
   </component>

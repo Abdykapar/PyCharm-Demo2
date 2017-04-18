@@ -12,12 +12,19 @@ def index(request):
     return HttpResponse(a.NameKir)
 
 
-def BolumderAdd():
+def BolumderAdd(request):
     # file_location = "/media/abdykapar/46E6D1D4E6D1C479/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
-    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/Bolumder.xlsx"
+    file_location = "D:/FUTURE/lESSON/DIPLOM/sinav/Bolumder14.xlsx"
     book = xlrd.open_workbook(file_location)
     sheet = book.sheet_by_index(0)
+    bolum = Bolumder.objects.all()
+    print bolum.count()
+    for i in range(1,bolum.count()+1):
+        row = sheet.row(i)
+        print row[4].value
+        bolum.filter(id=i).update(Kod=row[4].value)
     # inserBolumder(sheet)
+    return HttpResponse('Ok')
 
 
 def show_column_names(xl_sheet):
@@ -37,7 +44,7 @@ def inserBolumder(val):
     b = []
     for a in range(1, val.nrows):
         row = val.row(a)
-        Bolum = Bolumder(NameOtd=row[1].value, NameTur=row[2].value, NameKir=row[2].value)
+        Bolum = Bolumder(NameOtd=row[1].value, NameTur=row[2].value, NameKir=row[3].value)
         Bolum.save()
 
 

@@ -7,9 +7,10 @@ class Bolumder(models.Model):
     NameOtd = models.CharField(max_length=100)
     NameTur = models.CharField(max_length=200)
     NameKir = models.CharField(max_length=200)
+    Kod = models.IntegerField(null=True, blank=True)
 
     def __unicode__(self):
-        return self.NameOtd
+        return self.NameTur
 
 
 class Lkp_God(models.Model):
@@ -82,6 +83,7 @@ class MyTable(models.Model):
     Otdelenie = models.ForeignKey(Bolumder,null=True, related_name='otdelenie')
     NomTerciha = models.ForeignKey(Bolumder,null=True, related_name='nomTerciha')
     DilSinav = models.IntegerField(default=0)
+    God_Created = models.IntegerField(null=True, blank=True)
 
 
 
