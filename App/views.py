@@ -7,9 +7,10 @@ from .models import Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp, P
 
 
 def index(request):
-    a = Bolumder.objects.get(id=2)
+    a = MyTable.objects.all()
+    print a
     # file_location = "/media/abdykapar/46E6D1D4E6D1C479/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
-    return HttpResponse(a.NameKir)
+    return render(request,'index.html',{'a':a})
 
 
 def BolumderAdd(request):

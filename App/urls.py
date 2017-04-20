@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^Edittable1', views.editTable1, name='edittable1'),
     url(r'^exp1', views.ExpRayon, name='exp1'),
     url(r'^pol$', views.pol, name='pol'),
+
 ]
