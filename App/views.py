@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from decimal import Decimal
@@ -7,10 +8,37 @@ from .models import Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp, P
 
 
 def index(request):
-    a = MyTable.objects.all()
+    a = TandooSort()
     print a
     # file_location = "/media/abdykapar/46E6D1D4E6D1C479/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
-    return render(request,'index.html',{'a':a})
+    return render(request,'app/index.html',{'a':a})
+
+
+def TandooSort():
+    items = MyTable.objects.order_by()
+    bolum = Bolumder.objects.order_by('-NumTandoo')
+    # for bol in bolum:
+    #     bol.NumTandoo = 0
+    #     bol.save()
+    # for bol in bolum:
+    #     print bol.id
+    #     for item in items:
+    #         if item.t1 == bol.Kod:
+    #             bol.NumTandoo += 1
+    #             bol.save()
+    #         if item.t2 == bol.Kod:
+    #             bol.NumTandoo += 1
+    #             bol.save()
+    #         if item.t3 == bol.Kod:
+    #             bol.NumTandoo += 1
+    #             bol.save()
+    #         if item.t4 == bol.Kod:
+    #             bol.NumTandoo += 1
+    #             bol.save()
+    #         if item.t5 == bol.Kod:
+    #             bol.NumTandoo += 1
+    #             bol.save()
+    return bolum
 
 
 def BolumderAdd(request):

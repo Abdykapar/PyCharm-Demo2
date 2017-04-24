@@ -8,6 +8,7 @@ class Bolumder(models.Model):
     NameTur = models.CharField(max_length=200)
     NameKir = models.CharField(max_length=200)
     Kod = models.IntegerField(null=True, blank=True)
+    NumTandoo = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.NameTur
