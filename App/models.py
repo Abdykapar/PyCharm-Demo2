@@ -9,6 +9,8 @@ class Bolumder(models.Model):
     NameKir = models.CharField(max_length=200)
     Kod = models.IntegerField(null=True, blank=True)
     NumTandoo = models.IntegerField(default=0)
+    Type = models.CharField(max_length=100,default='')
+    Orun = models.IntegerField(default=0)
 
     def __unicode__(self):
         return self.NameTur
@@ -99,7 +101,7 @@ class RayonExp(models.Model):
 
 
 class iv(models.Model):
-    name = models.CharField(max_length=200)
+    name = models.ForeignKey(Bolumder)
     bolum_pop = models.IntegerField(default=0)
     bolum_average = models.DecimalField(max_digits=12, decimal_places=6, blank=True)
     jer_id = models.ForeignKey(LkpOblast)
