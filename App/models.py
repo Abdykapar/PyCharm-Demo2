@@ -96,3 +96,10 @@ class MyTable(models.Model):
 class RayonExp(models.Model):
     Name = models.CharField(max_length=200)
     ExpName = models.ForeignKey(LkpRayon)
+
+
+class iv(models.Model):
+    name = models.CharField(max_length=200)
+    bolum_pop = models.IntegerField(default=0)
+    bolum_average = models.DecimalField(max_digits=12, decimal_places=6, blank=True)
+    jer_id = models.ForeignKey(LkpOblast)
