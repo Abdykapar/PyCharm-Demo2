@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from decimal import Decimal
 import xlrd
 from xlrd.sheet import ctype_text
-from .models import Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp, Pol
+from .models import iv, Bolumder, Lkp_God, LkpOblast, LkpRayon, MyTable, RayonExp, Pol
 
 
 def index(request):
@@ -12,6 +12,7 @@ def index(request):
     print a
     # file_location = "/media/abdykapar/46E6D1D4E6D1C479/FUTURE/lESSON/DIPLOM/sinav/table1.xlsx"
     return render(request,'app/index.html',{'a':a})
+
 
 
 def TandooSort():
