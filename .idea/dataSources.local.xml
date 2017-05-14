@@ -8,10 +8,11 @@
       <first-sync>true</first-sync>
     </data-source>
     <data-source name="Sqlite (Xerial) - django.sqlite3" uuid="23d8ad76-654f-44c7-8b58-6770dca36bbc">
-      <database-info product="SQLite" version="3.8.11" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
+      <database-info product="SQLite" version="3.16.1" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" />
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
       <auth-required>false</auth-required>
+      <introspection-schemas>*:</introspection-schemas>
     </data-source>
   </component>
 </project>

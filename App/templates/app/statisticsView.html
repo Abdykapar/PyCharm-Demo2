@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+     {% load static %}
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'app/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'app/css/stylish-portfolio.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'app/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <table class="table-bordered">
+  <thead>
+    <tr>
+        <th>#</th>
+      <th>Name</th>
+      <th>Ball</th>
+        <th>EA</th>
+        <th>SonSoz</th>
+        <th>SonSay</th>
+      <th>Bolum</th>
+      <th>Average</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in data %}
+    <tr>
+      <td>{{ i.mesto }}</td>
+      <td>{{ i.student.NameN }}</td>
+      <td>{{ i.ball }}</td>
+      <td>{{ i.student.EA }}</td>
+      <td>{{ i.student.SonSoz }}</td>
+      <td>{{ i.student.SonSay }}</td>
+      <td>{{ i.bolum.NameOtd }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+ <!-- jQuery -->
+    <script src="{% static 'app/js/jquery.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'app/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

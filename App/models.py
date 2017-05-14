@@ -7,32 +7,44 @@ class Bolumder(models.Model):
     NameOtd = models.CharField(max_length=100)
     NameTur = models.CharField(max_length=200)
     NameKir = models.CharField(max_length=200)
-    Kod = models.IntegerField(null=True, blank=True)
+    Kod = models.IntegerField(default=0, unique=True)
     NumTandoo = models.IntegerField(default=0)
-    Type = models.CharField(max_length=100,default='')
+    Type = models.CharField(max_length=100, default='')
     Orun = models.IntegerField(default=0)
 
     def __unicode__(self):
-        return self.NameTur
+        return self.NameOtd
 
 
 class Lkp_God(models.Model):
     God = models.IntegerField()
 
+    def __unicode__(self):
+        return self.God
+
 
 class LkpOblast(models.Model):
     NameOblast = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.NameOblast
 
 
 class LkpRayon(models.Model):
     KodOblast = models.ForeignKey(LkpOblast, on_delete=models.CASCADE)
     Rayon = models.CharField(max_length=200)
 
+    def __unicode__(self):
+        return self.KodOblast
+
 
 class Pol(models.Model):
     PolK = models.CharField(max_length=200)
     PolR = models.CharField(max_length=200)
     PolT = models.CharField(max_length=200)
+
+    def __unicode__(self):
+        return self.PolR
 
 
 class MyTable(models.Model):
@@ -43,17 +55,17 @@ class MyTable(models.Model):
     Korpus = models.CharField(max_length=200)
     Pol = models.CharField(max_length=200)
     Dr = models.CharField(max_length=200, blank=True, null=True)
-    Nas = models.CharField(max_length=200,  blank=True, null=True)
-    Sh = models.CharField(max_length=200,  blank=True, null=True)
-    Adress_Sh_Oblast = models.ForeignKey(LkpOblast,on_delete=models.CASCADE,related_name='address_sh_oblast')
+    Nas = models.CharField(max_length=200, blank=True, null=True)
+    Sh = models.CharField(max_length=200, blank=True, null=True)
+    Adress_Sh_Oblast = models.ForeignKey(LkpOblast, on_delete=models.CASCADE, related_name='address_sh_oblast')
     Adress_Sh_Rayon = models.ForeignKey(LkpRayon, on_delete=models.CASCADE, related_name='address_sh_rayon')
-    Adress_Sh_Selo = models.CharField(max_length=200,  blank=True, null=True)
+    Adress_Sh_Selo = models.CharField(max_length=200, blank=True, null=True)
     Adress_Home_Oblast = models.ForeignKey(LkpOblast, on_delete=models.CASCADE, related_name='address_home_oblast')
     Adress_Home_Rayon = models.ForeignKey(LkpRayon, on_delete=models.CASCADE, related_name='address_home_rayon')
-    Adress_Home_Selo = models.CharField(max_length=200,  blank=True, null=True)
-    Adress_Home_Ulisa = models.CharField(max_length=200,  blank=True, null=True)
-    Telefon = models.CharField(max_length=200,  blank=True, null=True)
-    God = models.ForeignKey(Lkp_God,on_delete=models.CASCADE)
+    Adress_Home_Selo = models.CharField(max_length=200, blank=True, null=True)
+    Adress_Home_Ulisa = models.CharField(max_length=200, blank=True, null=True)
+    Telefon = models.CharField(max_length=200, blank=True, null=True)
+    God = models.ForeignKey(Lkp_God, on_delete=models.CASCADE)
     t1 = models.IntegerField(null=True, blank=True)
     t2 = models.IntegerField(null=True, blank=True)
     t3 = models.IntegerField(null=True, blank=True)
@@ -88,24 +100,59 @@ class MyTable(models.Model):
     SonSay = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True)
     Son = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True)
     SonDil = models.DecimalField(max_digits=12, decimal_places=4, blank=True, null=True)
-    Otdelenie = models.ForeignKey(Bolumder,null=True, related_name='otdelenie')
-    NomTerciha = models.ForeignKey(Bolumder,null=True, related_name='nomTerciha')
+    Otdelenie = models.ForeignKey(Bolumder, null=True, related_name='otdelenie')
+    NomTerciha = models.ForeignKey(Bolumder, null=True, related_name='nomTerciha')
     DilSinav = models.IntegerField(default=0)
     God_Created = models.IntegerField(null=True, blank=True)
 
+    def __unicode__(self):
+        return self.NameN
 
 
 class RayonExp(models.Model):
     Name = models.CharField(max_length=200)
     ExpName = models.ForeignKey(LkpRayon)
 
+    def __unicode__(self):
+        return self.Name
+
 
 class iv(models.Model):
-<<<<<<< HEAD
-    name = models.CharField(max_length=200)
-=======
     name = models.ForeignKey(Bolumder)
->>>>>>> coder
     bolum_pop = models.IntegerField(default=0)
     bolum_average = models.DecimalField(max_digits=12, decimal_places=6, blank=True)
     jer_id = models.ForeignKey(LkpOblast)
+
+    def __unicode__(self):
+        return self.name
+
+
+class averageBol(models.Model):
+    averageBolId = models.ForeignKey(Bolumder)
+    average = models.DecimalField(max_digits=8, decimal_places=4, blank=True)
+    maxElement = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+    minElement = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+    chanse = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+
+    def __unicode__(self):
+        return self.average
+
+
+class last(models.Model):
+    student = models.ForeignKey(MyTable)
+    bolum = models.ForeignKey(Bolumder)
+    mesto = models.IntegerField(default=0)
+    ball = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+    average = models.ForeignKey(averageBol,default=1)
+
+    def __unicode__(self):
+        return self.student.NameN
+
+
+class Detail(models.Model):
+    student = models.ForeignKey(MyTable)
+    bolum = models.ForeignKey(Bolumder)
+    chance = models.DecimalField(max_digits=8, decimal_places=4, default=0)
+
+    def __unicode__(self):
+        return self.chance
